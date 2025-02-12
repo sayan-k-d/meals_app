@@ -63,21 +63,21 @@ class MealItems extends StatelessWidget {
                           metaData: '${meal.duration} min',
                         ),
                         SizedBox(
-                          width: 12,
+                          width: 10,
                         ),
                         MealItemTrait(
                           icon: Icons.work,
                           metaData: _formatComplexity(meal.complexity),
                         ),
                         SizedBox(
-                          width: 12,
+                          width: 10,
                         ),
                         MealItemTrait(
                           icon: Icons.schedule,
                           metaData: _formatAffordability(meal.affordability),
                         ),
                         SizedBox(
-                          width: 12,
+                          width: 10,
                         ),
                       ],
                     )
