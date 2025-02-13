@@ -43,11 +43,12 @@ class CategoriesScreen extends StatelessWidget {
         children: [
           for (final category in availableCategories)
             CategoryItems(
+              key: ValueKey(category.id),
               category: category,
               onSelectedCategory: (id, title) {
                 _selectedCategory(context, id, title);
               },
-            )
+            ),
         ],
       ),
     );

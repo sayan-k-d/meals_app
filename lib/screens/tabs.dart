@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/providers/meals_provider.dart';
 import 'package:meals_app/providers/favorites_provider.dart';
 import 'package:meals_app/screens/categories.dart';
 import 'package:meals_app/screens/filters.dart';
@@ -63,7 +62,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
       await Navigator.push<Map<Filters, bool>>(
         context,
         MaterialPageRoute(
-          builder: (ctx) => FiltersScreen(
+          builder: (ctx) => const FiltersScreen(
               // filters: _filters,
               ),
         ),
@@ -76,24 +75,10 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final meals = ref.watch(mealsProvider);
+    // final meals = ref.watch(mealsProvider);
+    // final filters = ref.watch(filtersProvider);
     final favoriteMeals = ref.watch(favoriteMealsProvider);
-    final filters = ref.watch(filtersProvider);
-    final availableFIlteredMeals = meals.where((meal) {
-      if (filters[Filters.glutenFree]! && !meal.isGlutenFree) {
-        return false;
-      }
-      if (filters[Filters.lactoseFree]! && !meal.isLactoseFree) {
-        return false;
-      }
-      if (filters[Filters.vegetarian]! && !meal.isVegetarian) {
-        return false;
-      }
-      if (filters[Filters.vegan]! && !meal.isVegan) {
-        return false;
-      }
-      return true;
-    }).toList();
+    final availableFIlteredMeals = ref.watch(availableFilteredMeals);
 
     Widget content = CategoriesScreen(
       // onSetFavoriteMeal: setFavoriteMeal,

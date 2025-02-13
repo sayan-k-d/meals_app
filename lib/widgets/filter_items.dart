@@ -18,11 +18,10 @@ class FilterItems extends ConsumerWidget {
   // final void Function(bool value, String filterIdentifier) onCheckedFilter;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final setFilter = ref.watch(filtersProvider.notifier);
     return SwitchListTile(
       value: isFilterChecked,
       onChanged: (value) {
-        setFilter.setFilter(filterIdentifier, value);
+        ref.read(filtersProvider.notifier).setFilter(filterIdentifier, value);
         // onCheckedFilter(value, filterIdentifier);
       },
       title: Text(

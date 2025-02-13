@@ -32,12 +32,15 @@ class MealItems extends StatelessWidget {
         splashColor: Theme.of(context).colorScheme.onSurface,
         child: Stack(
           children: [
-            FadeInImage(
-              placeholder: MemoryImage(kTransparentImage),
-              image: NetworkImage(meal.imageUrl),
-              fit: BoxFit.cover,
-              height: 200,
-              width: double.infinity,
+            Hero(
+              tag: meal.id,
+              child: FadeInImage(
+                placeholder: MemoryImage(kTransparentImage),
+                image: NetworkImage(meal.imageUrl),
+                fit: BoxFit.cover,
+                height: 200,
+                width: double.infinity,
+              ),
             ),
             Positioned(
               bottom: 0,
@@ -63,22 +66,22 @@ class MealItems extends StatelessWidget {
                           metaData: '${meal.duration} min',
                         ),
                         SizedBox(
-                          width: 10,
+                          width: 8,
                         ),
                         MealItemTrait(
                           icon: Icons.work,
                           metaData: _formatComplexity(meal.complexity),
                         ),
                         SizedBox(
-                          width: 10,
+                          width: 8,
                         ),
                         MealItemTrait(
                           icon: Icons.schedule,
                           metaData: _formatAffordability(meal.affordability),
                         ),
-                        SizedBox(
-                          width: 10,
-                        ),
+                        // SizedBox(
+                        //   width: 10,
+                        // ),
                       ],
                     )
                   ],
